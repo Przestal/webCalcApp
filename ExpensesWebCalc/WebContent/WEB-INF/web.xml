@@ -63,4 +63,14 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>addColumn</servlet-name>
+        <servlet-class>com.przestal.controller.AddColumnServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>addColumn</servlet-name>
+        <url-pattern>/addColumn</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

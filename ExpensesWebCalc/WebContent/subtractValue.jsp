@@ -98,7 +98,11 @@
     <table class="w3-table-all">
         <thead>
         <tr class="w3-green">
-            <th>Year/Month</th>
+            <th>Year/Month
+            <a href="/home.jsp">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                </a>
+                </th>
             <th>Jedzenie</th>
         </tr>
         <tr>

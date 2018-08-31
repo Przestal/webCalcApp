@@ -100,8 +100,12 @@
     <table class="w3-table-all">
         <thead>
         <tr class="w3-green">
-            <th>Year/Month</th>
-            <th>Jedzenie</th>
+            <th>Year/Month
+            <a href="/addColumn.jsp">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                </a>
+                </th>
+            <jsp:include page="table/table.jsp"></jsp:include>
         </tr>
         <tr>
             <td>2018/08</td>
