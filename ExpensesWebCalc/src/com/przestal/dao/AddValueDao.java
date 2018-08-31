@@ -1,7 +1,6 @@
 package com.przestal.dao;
 
 import com.przestal.bean.AddValueBean;
-import com.przestal.bean.GetSumValueBean;
 import com.przestal.bean.SumValueBean;
 import com.przestal.db.DBConnection;
 

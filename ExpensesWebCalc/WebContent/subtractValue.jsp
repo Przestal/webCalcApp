@@ -104,8 +104,7 @@
         <tr>
             <td>2018/08</td>
             <td>
-
-                <%= session.getAttribute("sum")%>
+				${sum}
                 <form action="/subtractValue" method="post">
                 <input type="text" placeholder="Enter value" name="value">
                 <button type="submit" name="enterValue">Ok</button>

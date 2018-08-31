@@ -1,7 +1,8 @@
 package com.przestal.controller;
 
-import com.przestal.bean.LoginBean;
-import com.przestal.dao.LoginDao;
+import com.przestal.bean.*;
+import com.przestal.dao.*;
+import com.przestal.helper.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +27,9 @@ public class LoginServlet extends HttpServlet {
         String userValidate = loginDao.authenticateUser(loginBean);
 
         HttpSession session = request.getSession();
-
+        SetSumSession sumSession = new SetSumSession();
+        sumSession.showSumValueDB(request);
+        
         if (userValidate.equals("SUCCESS"))
         {
             session.setAttribute("email", email);

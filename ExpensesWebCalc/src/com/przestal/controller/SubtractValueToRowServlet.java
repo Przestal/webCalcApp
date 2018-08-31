@@ -4,6 +4,7 @@ import com.przestal.bean.SubtractValueBean;
 import com.przestal.bean.SumValueBean;
 import com.przestal.dao.AddValueDao;
 import com.przestal.dao.SubtractValueDao;
+import com.przestal.helper.SetSumSession;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,15 +24,9 @@ public class SubtractValueToRowServlet extends HttpServlet {
         SubtractValueDao subtractValueDao = new SubtractValueDao();
         AddValueDao valueDao = new AddValueDao();
         subtractValueDao.subtractValueToDB(subtractValueBean);
-
-        SumValueBean sumValueBean = new SumValueBean();
-        String sum = valueDao.getSumOfColumnValues();
-
-
-        HttpSession session = request.getSession();
-        session.setAttribute("sum",sum);
-
-
+        
+        SetSumSession sumSession = new SetSumSession();
+        sumSession.showSumValueDB(request);
         request.getRequestDispatcher("/result3.jsp").forward(request,response);
 
     }

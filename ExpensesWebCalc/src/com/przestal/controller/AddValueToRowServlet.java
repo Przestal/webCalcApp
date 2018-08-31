@@ -3,6 +3,7 @@ package com.przestal.controller;
 import com.przestal.bean.AddValueBean;
 import com.przestal.bean.SumValueBean;
 import com.przestal.dao.AddValueDao;
+import com.przestal.helper.SetSumSession;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,13 +25,10 @@ public class AddValueToRowServlet extends HttpServlet {
 
         AddValueDao valueDao = new AddValueDao();
         valueDao.addValueToTableDB(addVB);
-
-        SumValueBean sumValueBean = new SumValueBean();
-        String sum = valueDao.getSumOfColumnValues();
-
-        HttpSession session = req.getSession();
-        session.setAttribute("sum",sum);
-
+        
+        SetSumSession sumSession = new SetSumSession();
+        sumSession.showSumValueDB(req);
+        
         req.getRequestDispatcher("/result3.jsp").forward(req,resp);
 
     }

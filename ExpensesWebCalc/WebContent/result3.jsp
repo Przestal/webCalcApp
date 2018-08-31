@@ -114,8 +114,7 @@
                 <a href="/subtractValue.jsp">
                     <span class="glyphicon glyphicon-minus-sign"></span>
                 </a>
-                <%=
-                session.getAttribute("sum")%>
+                ${sum}
                 <a href="/addValue.jsp">
                     <span class="glyphicon glyphicon-plus-sign"></span>
                 </a>

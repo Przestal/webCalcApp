@@ -110,7 +110,7 @@
                 <a href="/subtractValue.jsp">
                     <span class="glyphicon glyphicon-minus-sign"></span>
                 </a>
-				
+				${sum}		
 
                 <a href="/addValue.jsp">
                     <span class="glyphicon glyphicon-plus-sign"></span>
