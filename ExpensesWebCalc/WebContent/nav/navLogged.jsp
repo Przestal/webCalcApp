@@ -3,7 +3,7 @@
 <html>
 <body>
 <nav class="w3-bar w3-black">
-    <a href="/homeLogged.jsp" class="w3-button w3-bar-item">Home</a>
+    <a href="/home/homeLogged.jsp" class="w3-button w3-bar-item">Home</a>
     <a href="/registrationFiles/registerLogged.jsp" class="w3-button w3-bar-item">Register</a>
     <a href="/contactLogged.jsp" class="w3-button w3-bar-item">Contact</a>
     <a href="/result.jsp" class="w3-button w3-bar-item">MyCalculator</a>

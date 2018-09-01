@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.przestal.helper.VerifyUserLoginStatus"%>
 <html>
 <head>
   <title>Home</title>
@@ -9,11 +10,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <body>
 
-<%@include file="header/header.jsp"%>
-<%@include file="nav/nav.jsp"%>
+<% 
+VerifyUserLoginStatus vuls = new VerifyUserLoginStatus();
+vuls.verifyLoginStatus(session,response);
+vuls.addCacheControl(response);
+%>
+<%@include file="../header/header.jsp"%>
+<%@include file="../nav/navLogged.jsp"%>
 
   <section>
-    <img src="images/calculator.jpg" style="height: 100%;width: 100%">
+    <img src="/images/calculator.jpg" style="height: 100%;width: 100%">
     <%--<img src="images/homeCalc.jpg" style="width:100%">
     <img src="images/logo.jpg" style="width:100%">
 --%></section>
@@ -22,7 +28,7 @@
     <p class="w3-opacity"><i>We know what is costs</i></p>
     <p class="w3-justify"><i>       Page created for help people managed their bills</i></p>
   </section>
-<%@include file="footer/footer.jsp"%>
+<%@include file="../footer/footer.jsp"%>
 </nav>
 </body>
 </html>
