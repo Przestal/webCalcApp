@@ -60,8 +60,22 @@ public class RegisterDao {
                 preparedStatement.setString(2, password);
                 preparedStatement.executeUpdate();
                 preparedStatement.close();
-
-            }else {
+                
+                try {
+                statement = connection.createStatement();
+                statement.executeUpdate("create table "+ registerBean.getEmail()+"_columns"+
+                " (id serial primary key not null, columnsName varchar(50) not null); ");
+                statement.executeUpdate("create table "+ registerBean.getEmail()+"_costs"+
+                        " (id serial primary key not null, costs float8 not null); ");
+                statement.executeUpdate("create table "+ registerBean.getEmail()+"_sum"+
+                        " (id serial primary key not null, sum float8 not null); ");
+                
+                statement.close();        
+                }catch(SQLException e) {
+                	e.printStackTrace();
+                }
+                
+               }else {
                 return "FAILED";
             }
 

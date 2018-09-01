@@ -27,8 +27,9 @@ public class LoginServlet extends HttpServlet {
         String userValidate = loginDao.authenticateUser(loginBean);
 
         HttpSession session = request.getSession();
+        
         SetSumSession sumSession = new SetSumSession();
-        sumSession.showSumValueDB(request);
+        sumSession.showSumValueDB(request,loginBean.getEmail());
         
         if (userValidate.equals("SUCCESS"))
         {

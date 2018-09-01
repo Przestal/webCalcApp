@@ -2,16 +2,16 @@ package com.przestal.bean;
 
 public class SubtractValueBean {
 
-    private String value;
+    private Double value;
 
     public SubtractValueBean() {
     }
 
-    public String getValue() {
-        return "-"+value;
+    public Double getValue() {
+        return -value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 }

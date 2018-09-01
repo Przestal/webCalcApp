@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 
@@ -29,8 +31,12 @@ public class RegisterServlet extends HttpServlet {
             RegisterDao registerDao = new RegisterDao();
             String createUsers = registerDao.createUser(registerBean);
 
+            HttpSession session = req.getSession();
+            
             if (createUsers.equals("SUCCESS")) {
-
+            	session.removeAttribute("email");
+                session.invalidate();
+                
                 req.getRequestDispatcher("registrationFiles/registerSuccess.jsp").forward(req, resp);
             } else if (createUsers.equals("FAILED")) {
 

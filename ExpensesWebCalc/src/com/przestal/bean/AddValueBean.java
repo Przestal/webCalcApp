@@ -5,16 +5,16 @@ import java.text.DecimalFormat;
 public class AddValueBean {
 
 
-    private String value;
+    private Double value;
 
     public AddValueBean() {
     }
 
-    public String getValue() {
+    public Double getValue() {
        return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 }

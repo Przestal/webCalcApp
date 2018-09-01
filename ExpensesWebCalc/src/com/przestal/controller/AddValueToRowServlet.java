@@ -1,7 +1,6 @@
 package com.przestal.controller;
 
 import com.przestal.bean.AddValueBean;
-import com.przestal.bean.SumValueBean;
 import com.przestal.dao.AddValueDao;
 import com.przestal.helper.SetSumSession;
 
@@ -19,15 +18,20 @@ public class AddValueToRowServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String value = req.getParameter("value");
-
+        Double valueD = Double.valueOf(value);
+        HttpSession session = req.getSession();
+       
+        String email = (String) session.getAttribute("email");
+        
+        
         AddValueBean addVB = new AddValueBean();
-        addVB.setValue(value);
+        addVB.setValue(valueD);
 
         AddValueDao valueDao = new AddValueDao();
-        valueDao.addValueToTableDB(addVB);
+        valueDao.addValueToTableDB(addVB, email );
         
         SetSumSession sumSession = new SetSumSession();
-        sumSession.showSumValueDB(req);
+        sumSession.showSumValueDB(req, email);
         
         req.getRequestDispatcher("/result3.jsp").forward(req,resp);
 

@@ -17,16 +17,19 @@ public class SubtractValueToRowServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     String value = request.getParameter("value");
-
+    Double valueD = Double.valueOf(value);
         SubtractValueBean subtractValueBean = new SubtractValueBean();
-        subtractValueBean.setValue(value);
-
+        subtractValueBean.setValue(valueD);
+        
+        HttpSession session = request.getSession();
+        String emailSession = (String) session.getAttribute("email");
+        
         SubtractValueDao subtractValueDao = new SubtractValueDao();
-        AddValueDao valueDao = new AddValueDao();
-        subtractValueDao.subtractValueToDB(subtractValueBean);
+        subtractValueDao.subtractValueToDB(subtractValueBean, emailSession);
         
         SetSumSession sumSession = new SetSumSession();
-        sumSession.showSumValueDB(request);
+        
+        sumSession.showSumValueDB(request,emailSession);
         request.getRequestDispatcher("/result3.jsp").forward(request,response);
 
     }

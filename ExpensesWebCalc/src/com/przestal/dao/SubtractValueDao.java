@@ -15,15 +15,15 @@ public class SubtractValueDao {
     Double result = null;
 
 
-    public void subtractValueToDB(SubtractValueBean subtractValueBean) {
+    public void subtractValueToDB(SubtractValueBean subtractValueBean, String email) {
 
 
         try {
             connection = DBConnection.createConnection();
             statement = connection.createStatement();
 
-            preparedStatement = connection.prepareStatement("INSERT INTO costsvalue(food) VALUES (?)");
-            preparedStatement.setString(1, subtractValueBean.getValue());
+            preparedStatement = connection.prepareStatement("INSERT INTO "+email+"_costs(costs) VALUES (?)");
+            preparedStatement.setDouble(1, subtractValueBean.getValue());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
