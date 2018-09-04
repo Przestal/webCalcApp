@@ -1,4 +1,4 @@
-<%@ page import="com.przestal.dao.AddValueDao" %>
+<%@ page import="com.przestal.dao.*" %>
 <%@ page import="com.przestal.bean.*" %>
 <%@ page import="com.przestal.helper.VerifyUserLoginStatus" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -105,6 +105,8 @@
                     <span class="glyphicon glyphicon-plus-sign"></span>
                 </a>
                 </th>
+                <th> Food</th>
+                
             <jsp:include page="table/table.jsp"></jsp:include>
         </tr>
         <tr>

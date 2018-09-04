@@ -102,14 +102,19 @@
                     <input type="text" placeholder="Column name" name="columnName">
                     <button type="submit" name="enterValue">Ok</button>
                 </form>
-            <th>Jedzenie</th>
+            <th>Food</th>
         </tr>
         <tr>
             <td>2018/08</td>
             <td>
-				${sum}
-                
-            </td>
+            <a href="/subtractValue.jsp">
+                    <span class="glyphicon glyphicon-minus-sign"></span>
+                </a>
+				${sum}		
+
+                <a href="/addValue.jsp">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                </a>
         </tr>
 
         </thead>

@@ -15,12 +15,14 @@ public class AddColumnServlet extends HttpServlet{
 	{
 		
 		String columnName = req.getParameter("columnName");
+		HttpSession session = req.getSession();
+		String email = (String) session.getAttribute("email");
 		
 		AddColumnBean columnBean = new AddColumnBean();
 		columnBean.setColumnName(columnName);
 		
 		AddColumnDao columnDao = new AddColumnDao();
-		columnDao.addColumnToDB(columnBean);
+		columnDao.addColumnToDB(columnBean, email);
 		
 		
 		

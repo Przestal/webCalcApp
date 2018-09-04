@@ -6,6 +6,7 @@
 <html>
 <body>
             <% AddColumnDao columnDao = new AddColumnDao();
-            columnDao.getColumns(response);	%>
+            String email = (String)session.getAttribute("email");
+            columnDao.getColumns(response,email);	%>
 </body>
 </html>

@@ -103,8 +103,7 @@
                     <span class="glyphicon glyphicon-plus-sign"></span>
                 </a>
             </th>
-            <th>Jedzenie
-
+            <th>Food
             </th>
 
         </tr>

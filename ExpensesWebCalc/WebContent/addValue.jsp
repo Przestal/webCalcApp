@@ -98,7 +98,7 @@
                     <span class="glyphicon glyphicon-plus-sign"></span>
                 </a>
                 </th>
-            <th>Jedzenie</th>
+            <th>Food</th>
         </tr>
         <tr>
             <td>2018/08</td>

@@ -18,12 +18,12 @@ public class AddColumnDao extends HttpServlet{
 	String result = null;
 	
 	
-	public void addColumnToDB(AddColumnBean columnBean) {
+	public void addColumnToDB(AddColumnBean columnBean, String email) {
 		
 	try {
 		conn = DBConnection.createConnection();
         stmt = conn.createStatement();
-        ptmt = conn.prepareStatement("INSERT INTO columns (columnname) VALUES (?)");
+        ptmt = conn.prepareStatement("INSERT INTO "+email+"_columns (columnsname) VALUES (?)");
         ptmt.setString(1, columnBean.getColumnName());
         ptmt.executeUpdate();
         
@@ -33,13 +33,13 @@ public class AddColumnDao extends HttpServlet{
 	 }
 	}
 
-	public String getColumns(HttpServletResponse resp) {
+	public String getColumns(HttpServletResponse resp, String email) {
 		
 		try {
 			PrintWriter out = resp.getWriter();
 			conn = DBConnection.createConnection();
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM columns");
+			rs = stmt.executeQuery("SELECT * FROM "+email+"_columns");
 			
         while(rs.next()) {
         	result = rs.getString(2);
