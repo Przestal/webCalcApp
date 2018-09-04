@@ -66,9 +66,9 @@ public class RegisterDao {
                 statement.executeUpdate("create table "+ registerBean.getEmail()+"_columns"+
                 " (id serial primary key not null, columnsName varchar(50) not null); ");
                 statement.executeUpdate("create table "+ registerBean.getEmail()+"_costs"+
-                        " (id serial primary key not null, costs float8 not null); ");
+                        " (id serial primary key not null, food float8); ");
                 statement.executeUpdate("create table "+ registerBean.getEmail()+"_sum"+
-                        " (id serial primary key not null, sum float8 not null); ");
+                        " (id serial primary key not null, food float8); ");
                 
                 statement.close();        
                 }catch(SQLException e) {

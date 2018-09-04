@@ -18,7 +18,7 @@ public class AddColumnDao extends HttpServlet{
 	String result = null;
 	
 	
-	public void addColumnToDB(AddColumnBean columnBean, String email) {
+	public void addColumnToDB(AddColumnBean columnBean, String email, HttpSession session) {
 		
 	try {
 		conn = DBConnection.createConnection();
@@ -26,7 +26,8 @@ public class AddColumnDao extends HttpServlet{
         ptmt = conn.prepareStatement("INSERT INTO "+email+"_columns (columnsname) VALUES (?)");
         ptmt.setString(1, columnBean.getColumnName());
         ptmt.executeUpdate();
-        
+       
+        addColumnInCostsAndSum(session,columnBean);
         
 	 }catch(SQLException e) {
 		e.printStackTrace();
@@ -53,5 +54,21 @@ public class AddColumnDao extends HttpServlet{
 			e.printStackTrace();
 		}
 		return "";
+	}
+	
+	public void addColumnInCostsAndSum(HttpSession session, AddColumnBean columnBean) {
+		
+		
+		try {
+			
+		conn = DBConnection.createConnection();
+		stmt = conn.createStatement();
+		stmt.executeUpdate("ALTER TABLE "+session.getAttribute("email")+"_costs ADD COLUMN "+
+		columnBean.getColumnName()+" float8;");
+		stmt.executeUpdate("ALTER TABLE "+session.getAttribute("email")+"_sum ADD COLUMN "+
+		columnBean.getColumnName()+" float8;");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

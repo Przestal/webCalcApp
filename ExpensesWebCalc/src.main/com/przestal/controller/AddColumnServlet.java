@@ -22,7 +22,7 @@ public class AddColumnServlet extends HttpServlet{
 		columnBean.setColumnName(columnName);
 		
 		AddColumnDao columnDao = new AddColumnDao();
-		columnDao.addColumnToDB(columnBean, email);
+		columnDao.addColumnToDB(columnBean, email, session);
 		
 		
 		

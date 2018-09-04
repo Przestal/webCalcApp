@@ -44,17 +44,20 @@ public class AddValueDao extends HttpServlet{
             resultSet = statement.executeQuery("SELECT SUM (CAST (costs AS FLOAT (2))) FROM "+email+"_costs;");
             if (resultSet.next()) {
                 result = resultSet.getDouble(1);
-            }
+            }/*else {
+            	statement.execute("INSERT INTO "+email+"_sum (food) VALUES (0)");
+                
+            }*/
             statement = connection.createStatement();
                 resultSet = statement.executeQuery("SELECT * FROM "+email+"_sum;");
                 if (resultSet.next()) {
-                    statement.executeUpdate("UPDATE "+email+"_sum SET sum =  " + result + ";");
+                    statement.executeUpdate("UPDATE "+email+"_sum SET food =  " + result + ";");
                 } else {
-                    statement.execute("INSERT INTO "+email+"_sum (sum) VALUES (0)");
-                    statement.executeUpdate("UPDATE "+email+"_sum SET sum =  " + result + ";");
+                    statement.execute("INSERT INTO "+email+"_sum (food) VALUES (0)");
+                    statement.executeUpdate("UPDATE "+email+"_sum SET food =  " + result + ";");
                     statement.close();
                 }
-            
+                
       
         } catch (SQLException e) {
             e.printStackTrace();
