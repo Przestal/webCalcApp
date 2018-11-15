@@ -89,38 +89,16 @@
 <%@ include file="header/header.jsp" %>
 <%@ include file="nav/navLogged.jsp" %>
 
-<div class="w3-col l10 m12" id="main" style="overflow: scroll" contenteditable="false">
-    <table class="w3-table-all">
-        <thead>
-        <tr class="w3-green">
-            <th>Year/Month
-            <a href="/home.jsp">
-                    <span class="glyphicon glyphicon-plus-sign"></span>
-                </a>
-                </th>
-            <th>Food</th>
-        </tr>
-        <tr>
-            <td>2018/08</td>
-            <td>
-				${sum}
-                <form action="/addValue" method="post">
-                    <input type="text" placeholder="Enter value" name="value">
-                    <button type="submit" name="enterValue">Ok</button>
-                </form>
-            </td>
-        </tr>
+<form action="/addValue" method="post">
+<br>
+Please select column:<%@ include file="select/selectColumn.jsp" %><br>
+Please select year/month:<br>
+<br>
+<input type="text" placeholder="Enter value" name="value">
+<button type="submit" name="EntValue">OK</button>
+</form>
 
-        </thead>
-    </table>
-</div>
-<%--</div>--%>
-<%--<form action="/CreateTable" method="post">--%>
 
-<%--<input type="text" name="name" placeholder="your output">--%>
-<%--<button type="submit" value="Enter">Button</button>--%>
-
-<%--</form>--%>
 <%@ include file="footer/footer.jsp" %>
 </body>
 </html>

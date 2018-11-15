@@ -22,12 +22,12 @@ public class AddValueDao extends HttpServlet{
     ResultSet resultSet = null;
     Double result = null;
     
-    public void addValueToTableDB(AddValueBean addValueBean, String email ) {
+    public void addValueToTableDB(AddValueBean addValueBean, String email) {
 
         try {
             connection = DBConnection.createConnection();
             statement = connection.createStatement();
-            preparedStatement = connection.prepareStatement("INSERT INTO "+email+"_costs(costs) VALUES (?);");
+            preparedStatement = connection.prepareStatement("INSERT INTO "+email+"_costs(name) VALUES (?);");
             preparedStatement.setDouble(1, addValueBean.getValue());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

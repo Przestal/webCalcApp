@@ -28,7 +28,7 @@ public class AddValueToRowServlet extends HttpServlet {
         addVB.setValue(valueD);
 
         AddValueDao valueDao = new AddValueDao();
-        valueDao.addValueToTableDB(addVB, email );
+        valueDao.addValueToTableDB(addVB, email);
         
         SetSumSession sumSession = new SetSumSession();
         sumSession.showSumValueDB(req, email);

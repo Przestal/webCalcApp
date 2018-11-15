@@ -73,4 +73,13 @@
         <url-pattern>/addColumn</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+    	<servlet-name>selected</servlet-name>
+    	<servlet-class>com.przestal.controller.SwitchDateController</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+    	<servlet-name>selected</servlet-name>
+    	<url-pattern>/selected</url-pattern>
+    </servlet-mapping>
 </web-app>

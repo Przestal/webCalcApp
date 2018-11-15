@@ -28,9 +28,9 @@ public class LoginServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         
-        SetSumSession sumSession = new SetSumSession();
+        /*SetSumSession sumSession = new SetSumSession();
         sumSession.showSumValueDB(request,loginBean.getEmail());
-        
+        */
         if (userValidate.equals("SUCCESS"))
         {
             session.setAttribute("email", email);

@@ -1,13 +1,12 @@
 package com.przestal.dao;
 
-import com.przestal.bean.AddColumnBean;
+import com.przestal.bean.*;
 import com.przestal.db.DBConnection;
 
 import java.io.PrintWriter;
 import java.sql.*;
 
 import javax.servlet.http.*;
-import javax.xml.ws.RespectBinding;
 
 public class AddColumnDao extends HttpServlet{
 
@@ -17,14 +16,14 @@ public class AddColumnDao extends HttpServlet{
 	Statement stmt = null;
 	String result = null;
 	
-	
 	public void addColumnToDB(AddColumnBean columnBean, String email, HttpSession session) {
 		
 	try {
 		conn = DBConnection.createConnection();
         stmt = conn.createStatement();
-        ptmt = conn.prepareStatement("INSERT INTO "+email+"_columns (columnsname) VALUES (?)");
+        ptmt = conn.prepareStatement("INSERT INTO "+email+"_columns (columnsname, sum) VALUES (?,?)");
         ptmt.setString(1, columnBean.getColumnName());
+        ptmt.setDouble(2, 0.00);
         ptmt.executeUpdate();
        
         addColumnInCostsAndSum(session,columnBean);
@@ -40,7 +39,7 @@ public class AddColumnDao extends HttpServlet{
 			PrintWriter out = resp.getWriter();
 			conn = DBConnection.createConnection();
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM "+email+"_columns");
+			rs = stmt.executeQuery("SELECT id, columnsname FROM "+email+"_columns");
 			
         while(rs.next()) {
         	result = rs.getString(2);
@@ -55,6 +54,50 @@ public class AddColumnDao extends HttpServlet{
 		}
 		return "";
 	}
+
+	public String getColumnsSelect(HttpServletResponse resp, String email, ColumnListsBean lists) {
+		try {
+			conn = DBConnection.createConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("select columnsname from "+email+"_columns");
+			
+			
+			while(rs.next()) {
+				result = rs.getString(1);
+				
+				for(int i=0;i<result.length();i++) {
+					lists.setColumnList(result, i);
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	public String getSumRows(HttpServletResponse resp, String email) {
+		
+		try {
+			PrintWriter out = resp.getWriter();
+			conn = DBConnection.createConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("SELECT id, sum FROM "+email+"_columns");
+			
+        while(rs.next()) {
+        	result = rs.getString(2);
+        	
+        	 out.println("<td>"+result+"</td>");
+        	
+        }
+        
+        
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	
+	
 	
 	public void addColumnInCostsAndSum(HttpSession session, AddColumnBean columnBean) {
 		

@@ -7,11 +7,11 @@
     <title>Login</title>
 </head>
 <style>
-    body, html {
+    html,body {
         height: 100%;
         font-family: Arial, Helvetica, sans-serif;
     }
-
+	
     * {
         box-sizing: border-box;
     }
@@ -69,12 +69,14 @@
     }
 
     table {
-
+    	width: 100%;
+		
     }
 
-    th, td {
-
-        min-width: auto;
+    th{
+    	background-color: #4CAF50;
+   		 color: white;
+        min-width: 100px;
     }
 
 
@@ -96,44 +98,47 @@
 <%@ include file="header/header.jsp" %>
 <%@ include file="nav/navLogged.jsp" %>
 
-<div class="w3-col l10 m12" id="main" style="overflow: scroll" contenteditable="false">
-    <table class="w3-table-all">
-        <thead>
+<div class="w3-col l10 m12" style="overflow: auto"  contenteditable="false">
+
+    <table class="w3-table-all" >
+		
+        
         <tr class="w3-green">
             <th>Year/Month
             <a href="/addColumn.jsp">
                     <span class="glyphicon glyphicon-plus-sign"></span>
-                </a>
-                </th>
-                <th> Food</th>
-                
-            <jsp:include page="table/table.jsp"></jsp:include>
+            </a>
+            <a href="/addValue.jsp">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+            </a>
+            </th>
+            <jsp:include page="table/tableColumn.jsp"></jsp:include>
         </tr>
         <tr>
             <td>2018/08</td>
-            <td>
-
-                <a href="/subtractValue.jsp">
-                    <span class="glyphicon glyphicon-minus-sign"></span>
-                </a>
-				${sum}		
-
-                <a href="/addValue.jsp">
-                    <span class="glyphicon glyphicon-plus-sign"></span>
-                </a>
-            </td>
+             <jsp:include page="table/tableRow.jsp"></jsp:include>
         </tr>
-
-        </thead>
+        <tr><td>2018/09</td></tr>
+        
+        <tr><td>2018/10</td></tr>
+		<tr><td>2018/11</td></tr>
+		<tr><td>2018/12</td></tr>
+		<tr><td>2019/01</td></tr>
+		<tr><td>2019/02</td></tr>
+		<tr><td>2019/03</td></tr>
+		<tr><td>2019/04</td></tr>
+		<tr><td>2019/05</td></tr>
+		<tr><td>2019/06</td></tr>
+		<tr><td>2019/07</td></tr>
+		<tr><td>2019/08</td></tr>
+		<tr><td>2019/09</td></tr>
+		<tr><td>2019/10</td></tr>
+		<tr><td>2019/11</td></tr>
+        <tr><td>2019/12</td></tr>
     </table>
 </div>
-<%--</div>--%>
-<%--<form action="/CreateTable" method="post">--%>
 
-<%--<input type="text" name="name" placeholder="your output">--%>
-<%--<button type="submit" value="Enter">Button</button>--%>
-
-<%--</form>--%>
 <%@ include file="footer/footer.jsp" %>
 </body>
 </html>
+
